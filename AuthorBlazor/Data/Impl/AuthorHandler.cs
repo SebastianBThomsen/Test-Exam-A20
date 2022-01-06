@@ -23,9 +23,9 @@ namespace AuthorBlazor.Data.Impl
                 Encoding.UTF8,
                 "application/json"
             );
-            Console.WriteLine($"Test {content}");
+            Console.WriteLine($"FØR JEG VIRKER {content}");
             HttpResponseMessage responseMessage = await client.PostAsync($"{URL}/Author", content);
-            Console.WriteLine($"Test {responseMessage}");
+            Console.WriteLine($"JEG VIRKER {responseMessage}");
             if (!responseMessage.IsSuccessStatusCode)
                 throw new Exception($"Error: {responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");        }
 

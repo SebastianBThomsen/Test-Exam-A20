@@ -84,7 +84,7 @@ using AuthorBlazor.Shared;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\ViewBooks.razor"
-using AuthorAPI;
+using Model;
 
 #line default
 #line hidden
@@ -105,7 +105,7 @@ using AuthorBlazor.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 58 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\ViewBooks.razor"
+#line 60 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\ViewBooks.razor"
        
     private IList<Author> _authors;
 
@@ -114,11 +114,17 @@ using AuthorBlazor.Data;
         _authors = await _authorHandler.GetAuthors();
     }
 
+    private async Task RemoveBook(int bookISBN)
+    {
+        await _bookHandler.DeleteBook(bookISBN);
+    }
+
 
 #line default
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager _navigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IBookHandler _bookHandler { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAuthorHandler _authorHandler { get; set; }
     }
 }

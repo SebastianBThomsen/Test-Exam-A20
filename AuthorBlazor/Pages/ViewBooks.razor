@@ -2,6 +2,7 @@
 @using Model
 @using AuthorBlazor.Data
 @inject IAuthorHandler _authorHandler
+@inject IBookHandler _bookHandler
 @inject NavigationManager _navigationManager
 <h3>ViewBooks</h3>
 
@@ -33,23 +34,24 @@ else
         <tbody>
         @foreach (Author author in _authors)
         {
-            <tr>
-                @*
-                <td>@author.Book.FirstOrDefault().Title</td>
-                <td>@author.Book.FirstOrDefault().PublicationYear</td>
-                <td>@author.Book.FirstOrDefault().NumOfPages</td>
-                *@
-                <td>@author.FirstName</td>
-                <td>@author.LastName</td>
+            @foreach (Book book in author.Book)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.PublicationYear</td>
+                    <td>@book.NumOfPages</td>
+                    <td>@author.FirstName</td>
+                    <td>@author.LastName</td>
 
-                @*
+                    
             <td>
-                        <button @onclick="@(() => RemovePerson(item.Id))">
+                        <button @onclick="@(() => RemoveBook(book.ISBN))">
                             <i class="oi oi-trash" style="color: #ff0000"/>
                         </button>
                     </td>
-*@
-            </tr>
+
+                </tr>
+            }
         }
         </tbody>
     </table>
@@ -61,6 +63,11 @@ else
     protected async override Task OnInitializedAsync()
     {
         _authors = await _authorHandler.GetAuthors();
+    }
+
+    private async Task RemoveBook(int bookISBN)
+    {
+        await _bookHandler.DeleteBook(bookISBN);
     }
 
 }

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using AuthorAPI.DataAccess;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace AuthorAPI.Controllers
 {

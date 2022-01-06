@@ -11,7 +11,6 @@ namespace AuthorBlazor.Pages
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Components;
 #nullable restore
 #line 1 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
 using System.Net.Http;
@@ -84,14 +83,21 @@ using AuthorBlazor.Shared;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\CreateAuthor.razor"
-using AuthorAPI;
+using AuthorBlazor.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\CreateAuthor.razor"
-using AuthorBlazor.Data;
+using Microsoft.AspNetCore.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\CreateAuthor.razor"
+using Model;
 
 #line default
 #line hidden
@@ -105,7 +111,7 @@ using AuthorBlazor.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 20 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\CreateAuthor.razor"
+#line 21 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\CreateAuthor.razor"
        
     private Author _author;
 
