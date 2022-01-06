@@ -1,0 +1,36 @@
+﻿@page "/CreateAuthor"
+@using AuthorBlazor.Data
+@using Microsoft.AspNetCore.Components
+@using Model
+
+@inject IAuthorHandler _authorHandler
+@inject NavigationManager _navigationManager
+
+<h3>Create Author</h3>
+
+<EditForm Model="@_author" OnValidSubmit="@AddNewAuthor">
+    <DataAnnotationsValidator/> <ValidationSummary/>
+    <div class="form-group"> First Name:<br/> <InputTextArea rows="1" @bind-Value="_author.FirstName"/> </div>
+    <div class="form-group"> Last Name:<br/> <InputTextArea rows="1" @bind-Value="_author.LastName"/> </div>
+    <p class="actions">
+        <button class="btn btn-outline-dark" type="submit">Add Author</button>
+    </p>
+</EditForm>
+
+
+@code {
+    private Author _author;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _author = new Author();
+    }
+
+    private void AddNewAuthor()
+    {
+        _authorHandler.AddAuthor(_author);
+        _navigationManager.NavigateTo("/ViewBooks");
+    }
+
+
+}
