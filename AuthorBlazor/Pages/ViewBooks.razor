@@ -39,7 +39,6 @@ else
 <p>
     Filter by Author First Name
     <input type="text" @oninput="@((arg) => FilterByAuthorName(arg))" />
-    <input type="text" @oninput="@((arg) => FilterByBookTitle(arg))" />
 </p>
 
 @if (_shownAuthors == null)
@@ -119,21 +118,6 @@ else
             _shownAuthors = _allAuthors;
         } 
     }
-
-
-    private void FilterByBookTitle(ChangeEventArgs changeEventArgs)
-    {
-        //TODO: PANIC AHRHHGHH
-        string title = changeEventArgs.Value?.ToString();
-
-        if (title.Length != 0)
-        {
-            _shownAuthors = _allAuthors.Where(a => a.FirstName.ToLower().Contains(title.ToLower())).ToList();
-        }
-        else
-        {
-            _shownAuthors = _allAuthors;
-        } 
-    }
-
+    
+    
 }
