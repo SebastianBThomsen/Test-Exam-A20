@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Model;
 
@@ -10,9 +12,20 @@ namespace AuthorBlazor.Data.Impl
     {
         private readonly string URL = "https://localhost:5001";
 
-        public Task AddBook(Book book)
+        public async Task AddBook(Book book, int authorId)
         {
-            throw new System.NotImplementedException();
+            using HttpClient client = new();
+
+            string bookAsJson = JsonSerializer.Serialize(book);
+
+            StringContent content = new StringContent(
+                bookAsJson,
+                Encoding.UTF8,
+                "application/json"
+            );
+            HttpResponseMessage responseMessage = await client.PostAsync($"{URL}/Book/{authorId}", content);
+            if (!responseMessage.IsSuccessStatusCode)
+                throw new Exception($"Error: {responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
         }
 
         public Task<IList<Book>> GetBooks()

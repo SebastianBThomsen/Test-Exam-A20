@@ -40,7 +40,7 @@ namespace AuthorAPI
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AuthorAPI v1"));
             }
 
-            app.UseHttpsRedirection();
+            app.UseHttpsRedirection(); //Fuck this hvis certs er lort
 
             app.UseRouting();
 

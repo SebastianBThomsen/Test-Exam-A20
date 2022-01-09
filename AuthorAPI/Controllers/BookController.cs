@@ -37,32 +37,32 @@ namespace AuthorAPI.Controllers
         [Route("{authorId:int}")]
         public async Task<ActionResult<Book>> PostAddAsync([FromBody] Book book, [FromRoute] int authorId)
         {
-            /*
             Console.WriteLine($"Attempting to put {book} in Database with authorId {authorId}");
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
             try
             {
-                EntityEntry<Author> returnAuthor = await _libraryDbContext.Authors.AddAsync(author);
+                Author authorReturn = await _libraryDbContext.Authors.Include(a => a.Book).FirstAsync(a => a.Id == authorId);
+                Console.WriteLine("Before Book added" + authorReturn);
+                authorReturn.Book.Add(book);
+                Console.WriteLine("Before update" + authorReturn);
+                _libraryDbContext.Update(authorReturn);
+                Console.WriteLine("After update" + authorReturn);
                 await _libraryDbContext.SaveChangesAsync();
-                return returnAuthor.Entity;
+                return Ok(book);
             }
             catch (Exception e)
             {
                 return StatusCode(500, e.Message);
             }
-            */
-            return StatusCode(500, NotFound());
         }
         
 
         [HttpDelete]
         [Route("{bookId:int}")]
-        public async Task<ActionResult> RemoveFamily([FromRoute] int bookId)
+        public async Task<ActionResult> RemoveBook([FromRoute] int bookId)
         {
             try
             {
