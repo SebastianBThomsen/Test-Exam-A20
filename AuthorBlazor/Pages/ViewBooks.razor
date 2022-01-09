@@ -6,6 +6,7 @@
 @inject NavigationManager _navigationManager
 <h3>ViewBooks</h3>
 
+@*
 @if (_authors == null)
 {
     <p>
@@ -25,24 +26,29 @@ else
                     LogicalFilterOperator="LogicalFilterOperator.And"
                     AllowSorting="true" PageSize="15" AllowPaging="true" AllowColumnResize="true">
         <Columns>
-
-            
-            @*<RadzenDataGridColumn TItem="Author" Property="Title" Title="Adult ID"/>
+            <RadzenDataGridColumn TItem="Author" Property="Title" Title="Adult ID"/>
             <RadzenDataGridColumn TItem="Author" Property="PublicationYear" Title="First Name"/>
-            <RadzenDataGridColumn TItem="Author" Property="NumOfPages" Title="Last Name"/>*@
+            <RadzenDataGridColumn TItem="Author" Property="NumOfPages" Title="Last Name"/>
             <RadzenDataGridColumn TItem="Author" Property="FirstName" Title="First Name"/>
             <RadzenDataGridColumn TItem="Author" Property="LastName" Title="Last Name"/> 
         </Columns>
     </RadzenDataGrid>
 }
-@*
-@if (_authors == null)
+*@
+
+<p>
+    Filter by Author First Name
+    <input type="text" @oninput="@((arg) => FilterByAuthorName(arg))" />
+    <input type="text" @oninput="@((arg) => FilterByBookTitle(arg))" />
+</p>
+
+@if (_shownAuthors == null)
 {
     <p>
         <em>Loading...</em>
     </p>
 }
-else if (!_authors.Any())
+else if (!_shownAuthors.Any())
 {
     <p>
         <em>No Authors exist. Please add some.</em>
@@ -62,7 +68,7 @@ else
         </tr>
         </thead>
         <tbody>
-        @foreach (Author author in _authors)
+        @foreach (Author author in _shownAuthors)
         {
             @foreach (Book book in author.Book)
             {
@@ -83,19 +89,51 @@ else
         }
         </tbody>
     </table>
-} *@
+} 
 
 @code {
-    private IList<Author> _authors;
+    private IList<Author> _allAuthors;
+    private IList<Author> _shownAuthors;
 
     protected async override Task OnInitializedAsync()
     {
-        _authors = await _authorHandler.GetAuthors();
+        _allAuthors = await _authorHandler.GetAuthors();
+        _shownAuthors = _allAuthors;
     }
 
     private async Task RemoveBook(int bookISBN)
     {
         await _bookHandler.DeleteBook(bookISBN);
+    }
+
+    private void FilterByAuthorName(ChangeEventArgs changeEventArgs)
+    {
+        string name = changeEventArgs.Value?.ToString();
+
+        if (name.Length != 0)
+        {
+            _shownAuthors = _allAuthors.Where(a => a.FirstName.ToLower().Contains(name.ToLower())).ToList();
+        }
+        else
+        {
+            _shownAuthors = _allAuthors;
+        } 
+    }
+
+
+    private void FilterByBookTitle(ChangeEventArgs changeEventArgs)
+    {
+        //TODO: PANIC AHRHHGHH
+        string title = changeEventArgs.Value?.ToString();
+
+        if (title.Length != 0)
+        {
+            _shownAuthors = _allAuthors.Where(a => a.FirstName.ToLower().Contains(title.ToLower())).ToList();
+        }
+        else
+        {
+            _shownAuthors = _allAuthors;
+        } 
     }
 
 }

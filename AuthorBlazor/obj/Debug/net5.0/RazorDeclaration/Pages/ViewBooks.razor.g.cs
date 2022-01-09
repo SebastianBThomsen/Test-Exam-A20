@@ -119,13 +119,15 @@ using AuthorBlazor.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 88 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\ViewBooks.razor"
+#line 93 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\ViewBooks.razor"
        
-    private IList<Author> _authors;
+    private IList<Author> _allAuthors;
+    private IList<Author> _shownAuthors;
 
     protected async override Task OnInitializedAsync()
     {
-        _authors = await _authorHandler.GetAuthors();
+        _allAuthors = await _authorHandler.GetAuthors();
+        _shownAuthors = _allAuthors;
     }
 
     private async Task RemoveBook(int bookISBN)
@@ -133,6 +135,21 @@ using AuthorBlazor.Data;
         await _bookHandler.DeleteBook(bookISBN);
     }
 
+    private void FilterByAuthorName(ChangeEventArgs changeEventArgs)
+    {
+        string name = changeEventArgs.Value?.ToString();
+
+        if (name.Length != 0)
+        {
+            _shownAuthors = _allAuthors.Where(a => a.FirstName.ToLower().Contains(name.ToLower())).ToList();
+        }
+        else
+        {
+            _shownAuthors = _allAuthors;
+        } 
+    }
+    
+    
 
 #line default
 #line hidden
