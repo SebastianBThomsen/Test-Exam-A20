@@ -598,19 +598,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\N_i_v\\.nuget\\packages\\": {}
+    "C:\\Users\\Frederik\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\N_i_v\\RiderProjects\\Test-Exam-A20\\AuthorBlazor\\AuthorBlazor.csproj",
+      "projectUniqueName": "C:\\Users\\Frederik\\RiderProjects\\Test-Exam-A20\\AuthorBlazor\\AuthorBlazor.csproj",
       "projectName": "AuthorBlazor",
-      "projectPath": "C:\\Users\\N_i_v\\RiderProjects\\Test-Exam-A20\\AuthorBlazor\\AuthorBlazor.csproj",
-      "packagesPath": "C:\\Users\\N_i_v\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\N_i_v\\RiderProjects\\Test-Exam-A20\\AuthorBlazor\\obj\\",
+      "projectPath": "C:\\Users\\Frederik\\RiderProjects\\Test-Exam-A20\\AuthorBlazor\\AuthorBlazor.csproj",
+      "packagesPath": "C:\\Users\\Frederik\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Frederik\\RiderProjects\\Test-Exam-A20\\AuthorBlazor\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\N_i_v\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Frederik\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -657,7 +657,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
