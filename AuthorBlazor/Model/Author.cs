@@ -11,5 +11,10 @@ namespace Model
         [Required, MaxLength(15)]
         public string LastName { get; set; }
         public List<Book> Book { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id}, {FirstName} {LastName}";
+        }
     }
 }

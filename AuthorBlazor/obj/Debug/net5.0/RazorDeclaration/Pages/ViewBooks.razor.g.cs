@@ -83,6 +83,20 @@ using AuthorBlazor.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 11 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+using Radzen.Blazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+using Radzen;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\ViewBooks.razor"
 using Model;
 
@@ -105,7 +119,7 @@ using AuthorBlazor.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 60 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\ViewBooks.razor"
+#line 88 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\ViewBooks.razor"
        
     private IList<Author> _authors;
 

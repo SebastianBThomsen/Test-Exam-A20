@@ -79,6 +79,20 @@ using AuthorBlazor.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 11 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+using Radzen.Blazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+using Radzen;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\CreateAuthor.razor"
 using AuthorBlazor.Data;
 

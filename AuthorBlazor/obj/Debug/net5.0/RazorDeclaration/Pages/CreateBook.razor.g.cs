@@ -82,6 +82,20 @@ using AuthorBlazor.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 11 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+using Radzen.Blazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+using Radzen;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\CreateBook.razor"
 using Microsoft.AspNetCore.Components;
 
@@ -111,21 +125,33 @@ using AuthorBlazor.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 24 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\CreateBook.razor"
+#line 35 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\CreateBook.razor"
        
 
+    private IList<Author> _authors;
     private Book _book;
+    private int authorId = 0;
 
     protected override async Task OnInitializedAsync()
     {
         _book = new();
+        _authors = await _authorHandler.GetAuthors();
     }
 
     private async Task AddNewBook()
     {
-        _book.Genre = "Test";
-        _bookHandler.AddBook(_book, 1);
-        _navigationManager.NavigateTo("/ViewBooks");
+        if (authorId != 0)
+        {
+            _bookHandler.AddBook(_book, authorId);
+            _navigationManager.NavigateTo("/ViewBooks");
+        }
+    }
+
+    private void OnChange(object args, string dropdownWithCustomFiltering)
+    {
+        Author author = new Author();
+        author = (Author) args;
+        authorId = author.Id;
     }
 
 

@@ -58,3 +58,5 @@ C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\obj\Debug\net5.0\ref\Aut
 C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\obj\Debug\net5.0\AuthorBlazor.pdb
 C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\obj\Debug\net5.0\AuthorBlazor.genruntimeconfig.cache
 C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\obj\Debug\net5.0\AuthorBlazor.csproj.CopyComplete
+C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\bin\Debug\net5.0\Radzen.Blazor.dll
+C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\bin\Debug\net5.0\System.Linq.Dynamic.Core.dll

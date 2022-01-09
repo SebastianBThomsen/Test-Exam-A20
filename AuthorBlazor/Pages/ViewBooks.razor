@@ -15,6 +15,36 @@
 else if (!_authors.Any())
 {
     <p>
+        <em>No Adults exist. Please add some.</em>
+    </p>
+}
+else
+{
+    <RadzenDataGrid Data="@_authors" TItem="Author" AllowFiltering="true" FilterMode="FilterMode.Simple"
+                    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                    LogicalFilterOperator="LogicalFilterOperator.And"
+                    AllowSorting="true" PageSize="15" AllowPaging="true" AllowColumnResize="true">
+        <Columns>
+
+            
+            @*<RadzenDataGridColumn TItem="Author" Property="Title" Title="Adult ID"/>
+            <RadzenDataGridColumn TItem="Author" Property="PublicationYear" Title="First Name"/>
+            <RadzenDataGridColumn TItem="Author" Property="NumOfPages" Title="Last Name"/>*@
+            <RadzenDataGridColumn TItem="Author" Property="FirstName" Title="First Name"/>
+            <RadzenDataGridColumn TItem="Author" Property="LastName" Title="Last Name"/> 
+        </Columns>
+    </RadzenDataGrid>
+}
+@*
+@if (_authors == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else if (!_authors.Any())
+{
+    <p>
         <em>No Authors exist. Please add some.</em>
     </p>
 }
@@ -42,9 +72,7 @@ else
                     <td>@book.NumOfPages</td>
                     <td>@author.FirstName</td>
                     <td>@author.LastName</td>
-
-                    
-            <td>
+                    <td>
                         <button @onclick="@(() => RemoveBook(book.ISBN))">
                             <i class="oi oi-trash" style="color: #ff0000"/>
                         </button>
@@ -55,7 +83,7 @@ else
         }
         </tbody>
     </table>
-}
+} *@
 
 @code {
     private IList<Author> _authors;
