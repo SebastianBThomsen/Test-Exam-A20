@@ -1,12 +1,19 @@
 ﻿Very nice setup:
 
-1. Install tools
+1. NuGet packages
+    - Microsoft.EntityFrameworkCore
+    - Microsoft.EntityFrameworkCore.Sqlite 
+    - microsoft.EntityFrameworkCore.Design
+
+2. Install tools
     - dotnet tool install -g dotnet-ef
     
-2. Create a migration:
-- dotnet ef migrations add InitialCreate
+3.  Setup DbContext
     
-3. Update to Database
+4. Create a migration:
+    - dotnet ef migrations add InitialCreate
+    
+5. Update to Database
     - dotnet ef database update
     
     
