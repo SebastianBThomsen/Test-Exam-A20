@@ -37,8 +37,15 @@ else
 *@
 
 <p>
-    Filter by Author First Name
-    <input type="text" @oninput="@((arg) => FilterByAuthorName(arg))" />
+    <h3>Filter Books</h3>
+    
+    @*<p>
+        Filter by Book Title: <input type="text" @oninput="@((arg) => FilterByBookTitle(arg))" style="width:50px"/>
+    </p>
+    <p>
+        Filter by Author First Name: <input type="text" @oninput="@((arg) => FilterByFirstName(arg))" style="width:50px"/>
+    </p>*@
+    <input type="text" @oninput="@((arg) => FilterByAuthorName(arg))" /> 
 </p>
 
 @if (_shownAuthors == null)
@@ -88,11 +95,14 @@ else
         }
         </tbody>
     </table>
-} 
+}
 
 @code {
     private IList<Author> _allAuthors;
     private IList<Author> _shownAuthors;
+
+    private string filterByBookTitle;
+    private string filterByFirstName;
 
     protected async override Task OnInitializedAsync()
     {
@@ -105,6 +115,7 @@ else
         await _bookHandler.DeleteBook(bookISBN);
     }
 
+
     private void FilterByAuthorName(ChangeEventArgs changeEventArgs)
     {
         string name = changeEventArgs.Value?.ToString();
@@ -116,8 +127,52 @@ else
         else
         {
             _shownAuthors = _allAuthors;
-        } 
+        }
     }
+
+
+    /*
+
+    private void FilterByBookTitle(ChangeEventArgs changeEventArgs)
+    {
+        foreach (var Book in _allAuthors)
+        {
+            
+        }
+        
+        try
+        {
+            filterByBookTitle = changeEventArgs.Value.ToString();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Fuck jeg fejlede i FilterByFirstName :((");
+        }
+
+        ExecuteFilterBook();
+    }
+
+    private void FilterByFirstName(ChangeEventArgs changeEventArgs)
+    {
+        try
+        {
+            filterByFirstName = changeEventArgs.Value.ToString();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Fuck jeg fejlede i FilterByFirstName :((");
+        }
+
+        ExecuteFilterBook();
+    }
+
     
-    
+    private void ExecuteFilterBook()
+    {
+        _shownAuthors = _allAuthors.Where(author =>
+            (filterByFirstName != null && author.FirstName.ToLower().Contains(filterByFirstName.ToLower()) || filterByFirstName == null) &&
+            (filterByBookTitle != null && author.Book..Title.ToLower().Contains(filterByBookTitle.ToLower()) || filterByBookTitle == null)).ToList();
+    }
+
+*/
 }

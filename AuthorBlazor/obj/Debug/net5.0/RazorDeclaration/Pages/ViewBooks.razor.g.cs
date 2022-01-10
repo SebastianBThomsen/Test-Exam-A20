@@ -13,98 +13,98 @@ namespace AuthorBlazor.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\Frederik\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+#line 1 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Frederik\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+#line 2 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Frederik\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+#line 3 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Frederik\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+#line 4 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\Frederik\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+#line 5 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\Frederik\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+#line 6 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\Frederik\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+#line 7 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\Frederik\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+#line 8 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\Frederik\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+#line 9 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
 using AuthorBlazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\Frederik\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+#line 10 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
 using AuthorBlazor.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\Frederik\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+#line 11 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
 using Radzen.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\Frederik\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
+#line 12 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\_Imports.razor"
 using Radzen;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Frederik\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\ViewBooks.razor"
+#line 2 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\ViewBooks.razor"
 using Model;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Frederik\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\ViewBooks.razor"
+#line 3 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\ViewBooks.razor"
 using AuthorBlazor.Data;
 
 #line default
@@ -119,10 +119,13 @@ using AuthorBlazor.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 93 "C:\Users\Frederik\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\ViewBooks.razor"
+#line 100 "C:\Users\N_i_v\RiderProjects\Test-Exam-A20\AuthorBlazor\Pages\ViewBooks.razor"
        
     private IList<Author> _allAuthors;
     private IList<Author> _shownAuthors;
+
+    private string filterByBookTitle;
+    private string filterByFirstName;
 
     protected async override Task OnInitializedAsync()
     {
@@ -135,6 +138,7 @@ using AuthorBlazor.Data;
         await _bookHandler.DeleteBook(bookISBN);
     }
 
+
     private void FilterByAuthorName(ChangeEventArgs changeEventArgs)
     {
         string name = changeEventArgs.Value?.ToString();
@@ -146,10 +150,54 @@ using AuthorBlazor.Data;
         else
         {
             _shownAuthors = _allAuthors;
-        } 
+        }
     }
+
+
+    /*
+
+    private void FilterByBookTitle(ChangeEventArgs changeEventArgs)
+    {
+        foreach (var Book in _allAuthors)
+        {
+            
+        }
+        
+        try
+        {
+            filterByBookTitle = changeEventArgs.Value.ToString();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Fuck jeg fejlede i FilterByFirstName :((");
+        }
+
+        ExecuteFilterBook();
+    }
+
+    private void FilterByFirstName(ChangeEventArgs changeEventArgs)
+    {
+        try
+        {
+            filterByFirstName = changeEventArgs.Value.ToString();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Fuck jeg fejlede i FilterByFirstName :((");
+        }
+
+        ExecuteFilterBook();
+    }
+
     
-    
+    private void ExecuteFilterBook()
+    {
+        _shownAuthors = _allAuthors.Where(author =>
+            (filterByFirstName != null && author.FirstName.ToLower().Contains(filterByFirstName.ToLower()) || filterByFirstName == null) &&
+            (filterByBookTitle != null && author.Book..Title.ToLower().Contains(filterByBookTitle.ToLower()) || filterByBookTitle == null)).ToList();
+    }
+
+*/
 
 #line default
 #line hidden
